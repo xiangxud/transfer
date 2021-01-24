@@ -1,0 +1,14 @@
+workerProcesses: 5
+
+logger:
+  dir: logs/prober
+  level: INFO
+  keepHours: 24
+pluginsConfig: etc/plugins
+
+report:
+  enabled: true
+  region: default 
+  interval: 4000
+  timeout: 3000
+  api: api/hbs/heartbeat

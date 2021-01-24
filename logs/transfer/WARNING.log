@@ -1,0 +1,3 @@
+2021-01-24 18:04:15.744859 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015, call timeout
+2021-01-24 18:04:15.744940 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015, call timeout
+2021-01-24 18:04:28.026845 WARNING stats/init.go:79 Post "http://127.0.0.1:2080/v1/push": EOF

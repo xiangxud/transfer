@@ -1,0 +1,6 @@
+2021-01-24 17:34:42.705709 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015, call timeout
+2021-01-24 17:34:42.705835 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015, call timeout
+2021-01-24 17:35:01.244249 WARNING stats/init.go:79 Post "http://127.0.0.1:2080/v1/push": EOF
+2021-01-24 17:35:02.332321 WARNING report/report.go:99 curl http://127.0.0.1:8000/api/hbs/instances?mod=judge&alive=1 fail: Get "http://127.0.0.1:8000/api/hbs/instances?mod=judge&alive=1": EOF
+2021-01-24 17:52:41.322753 WARNING stats/init.go:79 Post "http://127.0.0.1:2080/v1/push": EOF
+2021-01-24 17:52:43.603831 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015 get connection fail: conn <nil>, err dial tcp 192.168.0.25:8015: i/o timeout. proc: Name:192.168.0.25:8015,Cnt:17,active:4,all:4,free:0

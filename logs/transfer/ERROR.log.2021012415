@@ -1,0 +1,8 @@
+2021-01-24 15:10:17.135349 ERROR taosd/taosd.go:1377 [proc_agent_alive]: failed to query TDengine: Unable to establish connection
+2021-01-24 15:10:17.135368 ERROR taosd/Query.go:162 taosdQueryOne fail: Unable to establish connection
+2021-01-24 15:10:17.135550 ERROR taosd/taosd.go:1377 [proc_agent_alive]: failed to query TDengine: Unable to establish connection
+2021-01-24 15:10:17.135558 ERROR taosd/Query.go:162 taosdQueryOne fail: Unable to establish connection
+2021-01-24 15:10:17.559546 ERROR taosd/taosd.go:1377 [proc_agent_alive]: failed to query TDengine: taos_connect() fail!
+2021-01-24 15:10:17.563944 ERROR taosd/Query.go:162 taosdQueryOne fail: taos_connect() fail!
+2021-01-24 15:10:17.559908 ERROR taosd/taosd.go:1377 [proc_agent_alive]: failed to query TDengine: taos_connect() fail!
+2021-01-24 15:10:17.563981 ERROR taosd/Query.go:162 taosdQueryOne fail: taos_connect() fail!

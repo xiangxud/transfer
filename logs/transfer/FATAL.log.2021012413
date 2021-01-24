@@ -1,0 +1,2 @@
+2021-01-24 13:18:51.698354 FATAL rpc/rpc.go:29 fail to connect address: [0.0.0.0:8009], error: listen tcp 0.0.0.0:8009: bind: address already in use
+2021-01-24 13:19:00.120476 FATAL rpc/rpc.go:29 fail to connect address: [0.0.0.0:8009], error: listen tcp 0.0.0.0:8009: bind: address already in use

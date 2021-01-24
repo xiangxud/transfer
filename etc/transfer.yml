@@ -1,0 +1,81 @@
+backend:
+  datasource: "taosd"
+  taosd:     #for TDengine 
+    enabled: true
+    name: "taosd"
+    config:  
+      daemonIP: "192.168.0.25"
+      daemonName: "192.168.0.25"
+      serverPort: 6030
+      apiport: 6020
+      dbuser: "root"
+      dbpassword: "taosdata"
+      dbName: "n9e"
+      taosDriverName: "taosSql"
+      inputworkers: 20
+      insertsqlworkers: 20
+      insertbatchSize: 500
+      inputbuffersize: 500
+      queryworkers: 20
+      querydatachs: 100
+      insertTimeout: 2
+      callTimeout: 1000
+      debugprt: 0 #if 0 not print, if 2 print the sql,
+      taglen: 128
+      taglimit: 1024
+      tagnumlimit: 128
+      keep: 3650 #5 years数据保留期
+      days: 30    #一个月1个文件
+      blocks: 4     #内存块
+      url: ""
+      tdurl: ""
+      tagstr: ""
+  m3db:
+    enabled: false
+    name: "m3db"
+    namespace: "default"
+    seriesLimit: 0
+    docsLimit: 0
+    daysLimit: 7                               # max query time
+    # https://m3db.github.io/m3/m3db/architecture/consistencylevels/
+    writeConsistencyLevel: "majority"          # one|majority|all
+    readConsistencyLevel: "unstrict_majority"  # one|unstrict_majority|majority|all
+    config:
+      service:
+        # KV environment, zone, and service from which to write/read KV data (placement
+        # and configuration). Leave these as the default values unless you know what
+        # you're doing.
+        env: default_env
+        zone: embedded
+        service: m3db
+        etcdClusters:
+          - zone: embedded
+            endpoints:
+              - 127.0.0.1:2379
+            tls:
+              caCrtPath: /etc/etcd/certs/ca.pem
+              crtPath: /etc/etcd/certs/etcd-client.pem
+              keyPath: /etc/etcd/certs/etcd-client-key.pem
+  tsdb:
+    enabled: false
+    name: "tsdb"
+    cluster:
+      tsdb01: 127.0.0.1:8011
+  influxdb:
+    enabled: false
+    username: "influx"
+    password: "admin123"
+    precision: "s"
+    database: "n9e"
+    address: "http://127.0.0.1:8086"
+  opentsdb:
+    enabled: false
+    address: "127.0.0.1:4242"
+  kafka:
+    enabled: false
+    brokersPeers: "192.168.1.1:9092,192.168.1.2:9092"
+    topic: "n9e"
+logger:
+  dir: logs/transfer
+  level: DEBUG
+  keepHours: 24

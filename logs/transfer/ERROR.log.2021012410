@@ -1,0 +1,2 @@
+2021-01-24 10:14:46.941685 ERROR report/report.go:65 curl http://127.0.0.1:8000/api/hbs/heartbeat fail: Post "http://127.0.0.1:8000/api/hbs/heartbeat": http: server closed idle connection
+2021-01-24 10:14:48.873864 ERROR cron/stra.go:62 get stra err: Get "http://127.0.0.1:8006/api/mon/stras/effective?all=1": dial tcp 127.0.0.1:8006: i/o timeout

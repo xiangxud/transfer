@@ -1,0 +1,15 @@
+2021-01-24 15:01:52.678466 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015, call timeout
+2021-01-24 15:01:55.713333 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015, call timeout
+2021-01-24 15:10:17.135381 WARNING taosd/Query.go:91 fetch taosd data error: Unable to establish connection
+2021-01-24 15:10:17.135565 WARNING taosd/Query.go:91 fetch taosd data error: Unable to establish connection
+2021-01-24 15:10:17.563967 WARNING taosd/Query.go:91 fetch taosd data error: taos_connect() fail!
+2021-01-24 15:10:17.563986 WARNING taosd/Query.go:91 fetch taosd data error: taos_connect() fail!
+2021-01-24 15:11:51.625493 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015, call timeout
+2021-01-24 15:12:18.204945 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015, call timeout
+2021-01-24 15:12:18.204982 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015, call timeout
+2021-01-24 15:12:18.222607 WARNING report/report.go:99 curl http://127.0.0.1:8000/api/hbs/instances?mod=judge&alive=1 fail: Get "http://127.0.0.1:8000/api/hbs/instances?mod=judge&alive=1": EOF
+2021-01-24 15:12:20.662041 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015 get connection fail: conn <nil>, err dial tcp 192.168.0.25:8015: i/o timeout. proc: Name:192.168.0.25:8015,Cnt:7,active:1,all:1,free:0
+2021-01-24 15:12:20.954058 WARNING stats/init.go:79 Post "http://127.0.0.1:2080/v1/push": EOF
+2021-01-24 15:20:51.580421 WARNING stats/init.go:79 Post "http://127.0.0.1:2080/v1/push": EOF
+2021-01-24 15:42:13.751333 WARNING stats/init.go:79 Post "http://127.0.0.1:2080/v1/push": EOF
+2021-01-24 15:42:15.149060 WARNING report/report.go:99 curl http://127.0.0.1:8000/api/hbs/instances?mod=judge&alive=1 fail: Get "http://127.0.0.1:8000/api/hbs/instances?mod=judge&alive=1": EOF

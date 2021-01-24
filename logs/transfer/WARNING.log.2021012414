@@ -1,0 +1,5 @@
+2021-01-24 14:12:15.760861 WARNING stats/init.go:79 Post "http://127.0.0.1:2080/v1/push": EOF
+2021-01-24 14:29:18.570083 WARNING stats/init.go:79 Post "http://127.0.0.1:2080/v1/push": EOF
+2021-01-24 14:42:03.117862 WARNING backend/judge.go:111 send judge 192.168.0.25:8015 fail: 192.168.0.25:8015, call timeout
+2021-01-24 15:00:07.383764 WARNING report/report.go:99 curl http://127.0.0.1:8000/api/hbs/instances?mod=judge&alive=1 fail: Get "http://127.0.0.1:8000/api/hbs/instances?mod=judge&alive=1": dial tcp 127.0.0.1:8000: i/o timeout
+2021-01-24 15:00:15.172492 WARNING stats/init.go:79 Post "http://127.0.0.1:2080/v1/push": EOF

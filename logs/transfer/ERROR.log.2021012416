@@ -1,0 +1,2 @@
+2021-01-24 16:38:44.152278 ERROR taosd/taosd.go:1591 [taos_connect() fail!]: failed to Excute TDengine SQL: DESCRIBE proc_agent_alive;
+2021-01-24 16:38:44.975781 ERROR taosd/taosd.go:1436 [n9e]: failed to Excute TDengine SQL: syntax error near "from  proc_agent_alive   where ( endpoint ='

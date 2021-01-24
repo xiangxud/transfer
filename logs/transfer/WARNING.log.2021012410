@@ -1,0 +1,2 @@
+2021-01-24 10:14:46.959970 WARNING stats/init.go:79 Post "http://127.0.0.1:2080/v1/push": EOF
+2021-01-24 10:14:39.815646 WARNING cron/stra.go:48 get strategy from remote failed, error:Get "http://127.0.0.1:8006/api/mon/stras/effective?all=1": dial tcp 127.0.0.1:8006: i/o timeout

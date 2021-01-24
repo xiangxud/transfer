@@ -1,0 +1,2 @@
+2021-01-24 11:20:06.082524 ERROR report/report.go:65 curl http://127.0.0.1:8000/api/hbs/heartbeat fail: Post "http://127.0.0.1:8000/api/hbs/heartbeat": dial tcp 127.0.0.1:8000: i/o timeout
+2021-01-24 11:30:45.753439 ERROR taosd/taosd.go:1538 [Table does not exist]: failed to Excute TDengine SQL: DESCRIBE n9e_index_endpoint_clean;

@@ -1,0 +1,1 @@
+2021-01-24 14:04:30.246763 ERROR report/report.go:65 curl http://127.0.0.1:8000/api/hbs/heartbeat fail: Post "http://127.0.0.1:8000/api/hbs/heartbeat": EOF
