@@ -2,6 +2,171 @@
 n9e https://github.com/didi/nightingale
 TDengine https://github.com/taosdata/TDengine
 <pre><code>
+nginx.conf
+modify index ---> transfer
+
+judge.yml
+
+query:
+  indexMod: transfer
+  connTimeout: 1000
+  callTimeout: 2000
+  indexCallTimeout: 2000
+ 
+redis:
+  addrs: 
+    - 127.0.0.1:6379
+  pass: ""
+  # timeout:
+  #   conn: 500
+  #   read: 3000
+  #   write: 3000
+
+logger:
+  dir: logs/judge
+  level: INFO
+  keepHours: 24
+  
+monapi.yml
+---
+tokens:
+  - monapi-internal-third-module-pass-fjsdi
+
+indexMod: transfer
+
+logger:
+  dir: logs/monapi
+  level: INFO
+  keepHours: 24
+
+alarmEnabled: true
+
+region:
+  - default
+
+# clean history event
+cleaner:
+  # retention days
+  days: 100
+  # number of events deleted per time
+  batch: 100
+
+# read alert from redis
+redis:
+  addr: 127.0.0.1:6379
+  pass: ""
+  # timeout:
+  #   conn: 500
+  #   read: 3000
+  #   write: 3000
+i18n:
+  lang: zh
+
+notify:
+  p1: ["voice", "sms", "mail", "im"]
+  p2: ["sms", "mail", "im"]
+  p3: ["mail", "im"]
+
+# addresses accessible using browser
+link:
+  stra: http://n9e.com/mon/strategy/%v
+  event: http://n9e.com/mon/history/his/%v
+  claim: http://n9e.com/mon/history/cur/%v
+
+http:
+  mode: release
+  cookieDomain: ""
+  cookieName: ecmc-sid
+
+transfer.yml
+backend:
+  datasource: "taosd"
+  taosd:     #for TDengine 
+    enabled: true
+    name: "taosd"
+    config:  
+      daemonIP: "192.168.0.25"
+      daemonName: "192.168.0.25"
+      serverPort: 6030
+      apiport: 6020
+      dbuser: "root"
+      dbpassword: "taosdata"
+      dbName: "n9e"
+      taosDriverName: "taosSql"
+      inputworkers: 20
+      insertsqlworkers: 20
+      insertbatchSize: 500
+      inputbuffersize: 500
+      queryworkers: 20
+      querydatachs: 100
+      insertTimeout: 2
+      callTimeout: 1000
+      debugprt: 0 #if 0 not print, if 2 print the sql,
+      taglen: 128
+      taglimit: 1024
+      tagnumlimit: 128
+      keep: 3650 #5 years数据保留期
+      days: 30    #一个月1个文件
+      blocks: 4     #内存块
+      url: ""
+      tdurl: ""
+      tagstr: ""
+  m3db:
+    enabled: false
+    name: "m3db"
+    namespace: "default"
+    seriesLimit: 0
+    docsLimit: 0
+    daysLimit: 7                               # max query time
+    # https://m3db.github.io/m3/m3db/architecture/consistencylevels/
+    writeConsistencyLevel: "majority"          # one|majority|all
+    readConsistencyLevel: "unstrict_majority"  # one|unstrict_majority|majority|all
+    config:
+      service:
+        # KV environment, zone, and service from which to write/read KV data (placement
+        # and configuration). Leave these as the default values unless you know what
+        # you're doing.
+        env: default_env
+        zone: embedded
+        service: m3db
+        etcdClusters:
+          - zone: embedded
+            endpoints:
+              - 127.0.0.1:2379
+            tls:
+              caCrtPath: /etc/etcd/certs/ca.pem
+              crtPath: /etc/etcd/certs/etcd-client.pem
+              keyPath: /etc/etcd/certs/etcd-client-key.pem
+  tsdb:
+    enabled: false
+    name: "tsdb"
+    cluster:
+      tsdb01: 127.0.0.1:8011
+  influxdb:
+    enabled: false
+    username: "influx"
+    password: "admin123"
+    precision: "s"
+    database: "n9e"
+    address: "http://127.0.0.1:8086"
+  opentsdb:
+    enabled: false
+    address: "127.0.0.1:4242"
+  kafka:
+    enabled: false
+    brokersPeers: "192.168.1.1:9092,192.168.1.2:9092"
+    topic: "n9e"
+http:
+  mode: release
+  cookieDomain: ""
+  cookieName: ecmc-sid
+  
+logger:
+  dir: logs/transfer
+  level: DEBUG
+  keepHours: 24
+  
+  
 taos> show stables;
               name              |      created_time       | columns |  tags  |   tables    |
 ============================================================================================
