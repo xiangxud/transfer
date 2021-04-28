@@ -104,18 +104,18 @@ backend:
       dbName: "n9e"
       taosDriverName: "taosSql"
       inputworkers: 20
-      insertsqlworkers: 20
-      insertbatchSize: 500
-      inputbuffersize: 500
-      queryworkers: 20
-      querydatachs: 100
-      insertTimeout: 2
-      callTimeout: 1000
+      insertsqlworkers: 20 #Adjust according to PC quantity and index quantity
+      insertbatchSize: 500 #Adjust according to PC quantity and index quantity
+      inputbuffersize: 500 #Adjust according to PC quantity and index quantity
+      queryworkers: 20 #Adjust according to PC quantity and index quantity
+      querydatachs: 100 #Adjust according to PC quantity and index quantity
+      insertTimeout: 2 #Adjust according to PC quantity and index quantity
+      callTimeout: 1000 #Adjust according to PC quantity and index quantity
       debugprt: 0 #if 0 not print, if 2 print the sql,
       taglen: 128
       taglimit: 1024
       tagnumlimit: 128
-      keep: 3650 #5 years数据保留期
+      keep: 3650 #10 years数据保留期
       days: 30    #一个月1个文件
       blocks: 4     #内存块
       url: ""
