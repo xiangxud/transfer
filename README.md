@@ -2,6 +2,16 @@
 n9e https://github.com/didi/nightingale
 TDengine https://github.com/taosdata/TDengine
 <pre><code>
+modify:
+transfer/backend/init.go /
+transfer/config/config.go /
+
+add:
+
+transfer/backend/taosd/
+
+modify:
+
 nginx.conf
 modify index ---> transfer
 
