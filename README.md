@@ -1,6 +1,7 @@
 # transfer
 n9e https://github.com/didi/nightingale
 TDengine https://github.com/taosdata/TDengine
+<pre><code>
 taos> show stables;
               name              |      created_time       | columns |  tags  |   tables    |
 ============================================================================================
@@ -244,3 +245,4 @@ taos> select * from net_in_bits_total >> 20210428.sql;
 Query OK, 254069 row(s) in set (1.050476s)
 
 taos> 
+</code></pre>
