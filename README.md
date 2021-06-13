@@ -421,3 +421,6 @@ Query OK, 254069 row(s) in set (1.050476s)
 
 taos> 
 </code></pre>
+<br>欢迎加群ucGIS 708224555</br>
+<img src="https://github.com/xiangxud/ucGIS/blob/main/ucGISEngine/QQID.jpg" width="200"  alt="技术讨论群"/><br/>
+[我的博客](https://blog.csdn.net/superxxd)  
