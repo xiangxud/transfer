@@ -30,6 +30,20 @@ backend:
       url: ""
       tdurl: ""
       tagstr: ""
+  iotdb:
+    enabled: false
+    name: "iotdb"
+    address: "http://127.0.0.1:18080"
+    username: "root"
+    password: ""
+    database: "n9e"
+    timestampPrecision: "ms"
+    batch: 500
+    workerNum: 4
+    queueSize: 102400
+    maxRetry: 3
+    timeout: 5000
+    queryRowLimit: 10000
   m3db:
     enabled: false
     name: "m3db"

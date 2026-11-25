@@ -1,6 +1,33 @@
 # transfer
 n9e https://github.com/didi/nightingale
 TDengine https://github.com/taosdata/TDengine
+
+## Apache IoTDB backend
+
+The optional `backend.iotdb` datasource writes to an Apache IoTDB 2.x Table-model database through the Table REST v1 API. Enable the REST service on IoTDB, set `backend.datasource: "iotdb"`, and configure `backend.iotdb.enabled: true`. Leave the default datasource unchanged when not using IoTDB.
+
+```yaml
+backend:
+  datasource: "iotdb"
+  iotdb:
+    enabled: true
+    name: "iotdb"
+    address: "http://127.0.0.1:18080"
+    username: "root"
+    password: "${IOTDB_PASSWORD}"
+    database: "n9e"
+    timestampPrecision: "ms"
+    batch: 500
+    workerNum: 4
+    queueSize: 102400
+    maxRetry: 3
+    timeout: 5000
+    queryRowLimit: 10000
+```
+
+Each metric maps to a stable Table-model table. `endpoint`, `nid`, and the canonical JSON tag set are TAG columns; `value` is a DOUBLE FIELD, and the incoming timestamp is written using the configured precision. A small series catalog table supports metric, tag-pair, and tag-index queries. `queryRowLimit` bounds REST query results. SQL identifiers are generated from a hash of the metric name, so arbitrary metric strings do not become SQL syntax.
+
+The adapter requires numeric Nightingale metrics and IoTDB 2.x Table REST v1. SQL translation and the original table-inspection methods are not supported by this adapter.
 <pre><code>
 modify:
 transfer/backend/init.go /

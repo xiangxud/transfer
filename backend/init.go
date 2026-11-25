@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/didi/nightingale/src/modules/transfer/backend/influxdb"
+	iotdbbackend "github.com/didi/nightingale/src/modules/transfer/backend/iotdb"
 	"github.com/didi/nightingale/src/modules/transfer/backend/m3db"
 	"github.com/didi/nightingale/src/modules/transfer/backend/taosd"
 	"github.com/didi/nightingale/src/modules/transfer/backend/tsdb"
@@ -16,6 +17,7 @@ type BackendSection struct {
 
 	Judge    JudgeSection             `yaml:"judge"`
 	TDengine taosd.TDengineSection    `mapstructure:"taosd"`
+	IoTDB    iotdbbackend.Section     `yaml:"iotdb"`
 	M3db     m3db.M3dbSection         `yaml:"m3db"`
 	Tsdb     tsdb.TsdbSection         `yaml:"tsdb"`
 	Influxdb influxdb.InfluxdbSection `yaml:"influxdb"`
@@ -32,6 +34,7 @@ var (
 	kafkaPushEndpoint    *KafkaPushEndpoint
 	m3dbDataSource       *m3db.Client
 	taosdDataSource      *taosd.TDengineDataSource
+	iotdbDataSource      *iotdbbackend.DataSource
 )
 
 func Init(cfg BackendSection) {
@@ -103,5 +106,10 @@ func Init(cfg BackendSection) {
 		//log.Printf("TDengine datasource %s init", taosdDataSource.Section.Name)
 		fmt.Printf("Start TDengine datasource:", taosdDataSource.Section.Name)
 		RegisterDataSource(taosdDataSource.Section.Name, taosdDataSource)
-	}	
+	}
+	if cfg.IoTDB.Enabled {
+		iotdbDataSource = &iotdbbackend.DataSource{Section: cfg.IoTDB}
+		iotdbDataSource.Init()
+		RegisterDataSource(iotdbDataSource.Section.Name, iotdbDataSource)
+	}
 }
