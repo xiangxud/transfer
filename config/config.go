@@ -12,6 +12,7 @@ import (
 	"github.com/didi/nightingale/src/common/report"
 	"github.com/didi/nightingale/src/modules/transfer/aggr"
 	"github.com/didi/nightingale/src/modules/transfer/backend"
+	iotdbbackend "github.com/didi/nightingale/src/modules/transfer/backend/iotdb"
 	"github.com/didi/nightingale/src/modules/transfer/backend/taosd"
 	"github.com/didi/nightingale/src/modules/transfer/backend/tsdb"
 
@@ -215,6 +216,19 @@ func Parse(conf string) error {
 		"connTimeout": 1000, //链接超时时间，单位毫秒
 		"callTimeout": 3000, //访问超时时间，单位毫秒
 	})
+	viper.SetDefault("backend.iotdb", map[string]interface{}{
+		"enabled":            false,
+		"name":               "iotdb",
+		"address":            "http://127.0.0.1:18080",
+		"database":           "n9e",
+		"timestampPrecision": "ms",
+		"batch":              500,
+		"workerNum":          4,
+		"queueSize":          102400,
+		"maxRetry":           3,
+		"timeout":            5000,
+		"queryRowLimit":      10000,
+	})
 
 	viper.SetDefault("report", map[string]interface{}{
 		"mod":      "transfer",
@@ -253,6 +267,17 @@ func Parse(conf string) error {
 			return err
 		}
 		Config.Backend.TDengine = taosconfig
+	}
+	if Config.Backend.IoTDB.Enabled {
+		var iotdbConfig struct {
+			Backend struct {
+				IoTDB iotdbbackend.Section `yaml:"iotdb"`
+			} `yaml:"backend"`
+		}
+		if err := yaml.Unmarshal(bs, &iotdbConfig); err != nil {
+			return fmt.Errorf("cannot read IoTDB backend config from %s: %v", conf, err)
+		}
+		Config.Backend.IoTDB = iotdbConfig.Backend.IoTDB
 	}
 
 	return identity.Parse()
